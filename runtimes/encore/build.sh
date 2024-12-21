@@ -5,6 +5,13 @@ if ! [ -x "$(command -v encore)" ]; then
   exit 1
 fi
 
+ARCH=$(uname -m)
+if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
+  ARCH="arm64"
+else
+  ARCH="amd64"
+fi
+
 encore version update
 docker build -t encorebase -f Dockerfile.base .
-encore build docker --arch arm64 --base encorebase encorebench
+encore build docker --arch "$ARCH" --base encorebase encorebench

@@ -4,7 +4,7 @@ set -ex
 
 rm -rf ./results/*
 
-cd encore || exit
+cd ./runtimes/encore || exit
 ./build.sh
 cd .. || exit
 docker compose up \
