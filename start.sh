@@ -1,8 +1,10 @@
 #!/bin/sh
 
+set -ex
+
 rm -rf ./results/*
 
-cd encore || exit
+cd ./runtimes/encore || exit
 ./build.sh
 cd .. || exit
 docker compose up \
@@ -10,3 +12,4 @@ docker compose up \
     --remove-orphans \
     --force-recreate \
     --abort-on-container-exit
+node chart.js

@@ -1,0 +1,17 @@
+{
+  "name": "deno",
+  "version": "1.0.0",
+  "main": "deno.js",
+  "type": "module",
+  "dependencies": {
+    "express": "~4.21.2",
+    "hono": "~4.6.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -2,14 +2,10 @@
 
 ## Running
 
+Requires [Docker](https://docs.docker.com/engine/install/) and [Encore](https://encore.dev/docs/ts/install) to be installed locally.
+
 ```shell
 ./start.sh
 ```
 
-TODO something to make graphs -- output html with a js library, maybe imges too
-TODO expose all ports
-
-one with everything
-req/s
-avg resp time
-max resp time
+ - TODO expose all ports from docker-compose
