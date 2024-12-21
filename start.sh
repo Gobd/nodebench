@@ -12,4 +12,4 @@ docker compose up \
     --remove-orphans \
     --force-recreate \
     --abort-on-container-exit
-# node chart.js
+node chart.js

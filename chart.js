@@ -52,7 +52,7 @@ const files = await readdir('./results');
 const colors = files.length;
 let colorNum = 0;
 
-function selectColor(){
+function selectColor() {
     if (colors < 1) colors = 1
     return "hsl(" + (colorNum * (360 / colors) % 360) + ",100%,50%)";
 }
@@ -124,9 +124,3 @@ for (const data of datas) {
     chart.destroy();
     await writeFile(`./charts/${data.filename}`, buf);
 }
-
-
-/*
-add background color of light gray
-make colors orange? Or maybe color for bar?
-*/
