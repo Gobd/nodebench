@@ -1,0 +1,5 @@
+FROM node
+RUN apt-get update -y && apt-get -y install curl
+ENV ENCORE_LOG=off
+ENV ENCORE_NOTRACE=1
+ENV ENCORE_RUNTIME_LOG=error

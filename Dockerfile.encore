@@ -1,0 +1,10 @@
+FROM node
+ADD . /
+RUN apt-get update -y && apt-get -y install curl
+RUN curl -L https://encore.dev/install.sh | bash
+ENV ENCORE_INSTALL="/root/.encore"
+ENV PATH="$ENCORE_INSTALL/bin:$PATH"
+ENV ENCORE_LOG="error"
+ENV ENCORE_RUNTIME_LOG="error"
+WORKDIR /encore
+CMD ["encore", "run", "--browser=never", "--watch=false", "--listen=0.0.0.0:4000"]

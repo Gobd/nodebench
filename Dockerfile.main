@@ -1,0 +1,5 @@
+FROM golang
+ADD . .
+RUN go install github.com/codesenberg/bombardier@latest
+RUN mkdir /results
+CMD ["./bench.sh"]

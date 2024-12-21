@@ -1,0 +1,69 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    networks:
+      - bench-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://node:3004"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  bun:
+    build:
+      context: .
+      dockerfile: Dockerfile.bun
+    networks:
+      - bench-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://bun:3000"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  deno:
+    build:
+      context: .
+      dockerfile: Dockerfile.deno
+    networks:
+      - bench-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://deno:3008"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  encore:
+    image: encorebench
+    networks:
+      - bench-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://encore:8080"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile.main
+    networks:
+      - bench-network
+    volumes:
+      - ./results:/results
+    depends_on:
+      node:
+        condition: service_healthy
+      bun:
+        condition: service_healthy
+      deno:
+        condition: service_healthy
+      encore:
+        condition: service_healthy
+
+
+networks:
+  bench-network:
+    driver: bridge

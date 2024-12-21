@@ -1,0 +1,6 @@
+{
+  "name": "encore",
+  "devDependencies": {
+    "encore.dev": "~1.45.2"
+  }
+}
