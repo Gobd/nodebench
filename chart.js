@@ -3,11 +3,21 @@ import { parse } from 'node:path';
 import { Chart } from 'chart.js/auto';
 import { createCanvas } from "canvas";
 
-const dirExists = await stat('./charts').catch(() => false);
-if (dirExists) {
-    await rmdir('./charts', { recursive: true });
+const dirs = ['charts', 'tables'];
+for (const dir of dirs) {
+    const dirExists = await stat(`./results/${dir}`).catch(() => false);
+    if (dirExists) {
+        await rmdir(`./results/${dir}`, { recursive: true });
+    }
 }
-await mkdir('./charts');
+
+const files = await readdir('./results');
+
+for (const dir of dirs) {
+    await mkdir(`./results/${dir}`);
+}
+
+// TODO clean up chart generation and make the simple table JSON files
 
 const reqConf = {
     data: {
@@ -48,7 +58,6 @@ const maxLat = {
     },
 };
 
-const files = await readdir('./results');
 const colors = files.length;
 let colorNum = 0;
 
@@ -122,5 +131,5 @@ for (const data of datas) {
     const chart = new Chart(ctx, data.conf);
     const buf = await canvas.toBuffer()
     chart.destroy();
-    await writeFile(`./charts/${data.filename}`, buf);
+    await writeFile(`./results/charts/${data.filename}`, buf);
 }
