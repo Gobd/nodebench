@@ -1,6 +1,12 @@
-import { readdir, writeFile } from 'node:fs/promises';
+import { readdir, writeFile, stat, mkdir, rmdir } from 'node:fs/promises';
 import { Chart } from 'chart.js/auto';
 import { createCanvas } from "canvas";
+
+const dirExists = await stat('./charts').catch(() => false);
+if (dirExists) {
+    await rmdir('./charts', { recursive: true });
+}
+await mkdir('./charts');
 
 const files = await readdir('./results');
 
@@ -63,4 +69,4 @@ const ctx = canvas.getContext("2d");
 const chart = new Chart(ctx, reqConf);
 const buf = await canvas.toBuffer()
 chart.destroy();
-await writeFile('./mychart.png', buf);
+await writeFile('./charts/mychart.png', buf);
