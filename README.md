@@ -8,11 +8,6 @@ Requires [Docker](https://docs.docker.com/engine/install/) and [Encore](https://
 ./start.sh
 ```
 
- - TODO make graphs
+ - TODO improve graphs
  - TODO expose all ports from docker-compose
  - put node chart.js back in start.sh
-
-one graph with all runtimes & routers
- - req/s
- - avg resp time
- - max resp time
