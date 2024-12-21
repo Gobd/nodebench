@@ -16,6 +16,7 @@ const reqConf = {
             {
                 label: 'Reqs/s',
                 data: [],
+                backgroundColor: [],
             },
         ],
     },
@@ -28,6 +29,7 @@ const meanLat = {
             {
                 label: 'Mean Latency',
                 data: [],
+                backgroundColor: [],
             },
         ],
     },
@@ -40,25 +42,40 @@ const maxLat = {
             {
                 label: 'Max Latency',
                 data: [],
+                backgroundColor: [],
             },
         ],
     },
 };
 
 const files = await readdir('./results');
+const colors = files.length;
+let colorNum = 0;
+
+function selectColor(){
+    if (colors < 1) colors = 1
+    return "hsl(" + (colorNum * (360 / colors) % 360) + ",100%,50%)";
+}
+
 for (const file of files) {
     const data = JSON.parse(await readFile(`./results/${file}`, 'utf8'));
     const label = parse(file).name;
     const r = data.result;
+    const color = selectColor();
 
     reqConf.data.labels.push(label);
     reqConf.data.datasets[0].data.push(r.rps.mean);
+    reqConf.data.datasets[0].backgroundColor.push(color);
 
     meanLat.data.labels.push(label);
     meanLat.data.datasets[0].data.push(r.latency.mean);
+    meanLat.data.datasets[0].backgroundColor.push(color);
 
     maxLat.data.labels.push(label);
     maxLat.data.datasets[0].data.push(r.latency.max);
+    maxLat.data.datasets[0].backgroundColor.push(color);
+
+    colorNum++;
 }
 
 const datas = [{
