@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "listFiles": false,
+    "module": "ESNext",
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "outDir": "bin",
+    "rootDir": "./",
+    "sourceMap": true,
+    "target": "ESNext",
+    "noEmit": true,
+    "lib": ["ESNext"],
+    "types": ["@types/bun", "@types/deno"],
+    "skipLibCheck": true
+  },
+  "include": ["**/*"],
+  "exclude": [".vscode", "node_modules", "eslint.config.js"]
+}

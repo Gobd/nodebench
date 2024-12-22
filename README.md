@@ -8,4 +8,4 @@ Requires [Docker](https://docs.docker.com/engine/install/) and [Encore](https://
 ./start.sh
 ```
 
- - TODO expose all ports from docker-compose
+- TODO expose all ports from docker-compose
