@@ -17,46 +17,52 @@ for (const dir of dirs) {
     await mkdir(`./results/${dir}`);
 }
 
-// TODO clean up chart generation and make the simple table JSON files
-
-const reqConf = {
-    data: {
-        labels: [],
-        datasets: [
-            {
-                label: 'Reqs/s',
-                data: [],
-                backgroundColor: [],
-            },
-        ],
+let confs = {
+    reqs: {
+        label: 'Reqs/s',
     },
+    meanLat: {
+        label: 'Mean Latency',
+    },
+    maxLat: {
+        label: 'Max Latency',
+    }
 };
 
-const meanLat = {
-    data: {
-        labels: [],
-        datasets: [
-            {
-                label: 'Mean Latency',
-                data: [],
-                backgroundColor: [],
-            },
-        ],
-    },
-};
-
-const maxLat = {
-    data: {
-        labels: [],
-        datasets: [
-            {
-                label: 'Max Latency',
-                data: [],
-                backgroundColor: [],
-            },
-        ],
-    },
-};
+for (const key in confs) {
+    confs[key].table = {};
+    confs[key].conf = {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: confs[key].label,
+                    data: [],
+                    backgroundColor: [],
+                },
+            ],
+        },
+        options: {
+            plugins: {
+                customCanvasBackgroundColor: {
+                    color: 'black',
+                }
+            }
+        },
+        plugins: [{
+            id: 'customCanvasBackgroundColor',
+            beforeDraw: (chart, args, options) => {
+                const { ctx } = chart;
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillStyle = options.color;
+                ctx.fillRect(0, 0, chart.width, chart.height);
+                ctx.restore();
+            }
+        }],
+    };
+}
 
 const colors = files.length;
 let colorNum = 0;
@@ -72,64 +78,33 @@ for (const file of files) {
     const r = data.result;
     const color = selectColor();
 
-    reqConf.data.labels.push(label);
-    reqConf.data.datasets[0].data.push(r.rps.mean);
-    reqConf.data.datasets[0].backgroundColor.push(color);
+    confs.reqs.table[label] = Math.round(r.rps.mean);
+    confs.reqs.conf.data.labels.push(label);
+    confs.reqs.conf.data.datasets[0].data.push(r.rps.mean);
+    confs.reqs.conf.data.datasets[0].backgroundColor.push(color);
 
-    meanLat.data.labels.push(label);
-    meanLat.data.datasets[0].data.push(r.latency.mean);
-    meanLat.data.datasets[0].backgroundColor.push(color);
+    confs.meanLat.table[label] = Math.round(r.latency.mean);
+    confs.meanLat.conf.data.labels.push(label);
+    confs.meanLat.conf.data.datasets[0].data.push(r.latency.mean);
+    confs.meanLat.conf.data.datasets[0].backgroundColor.push(color);
 
-    maxLat.data.labels.push(label);
-    maxLat.data.datasets[0].data.push(r.latency.max);
-    maxLat.data.datasets[0].backgroundColor.push(color);
+    confs.maxLat.table[label] = Math.round(r.latency.max);
+    confs.maxLat.conf.data.labels.push(label);
+    confs.maxLat.conf.data.datasets[0].data.push(r.latency.max);
+    confs.maxLat.conf.data.datasets[0].backgroundColor.push(color);
 
     colorNum++;
 }
 
-const datas = [{
-    conf: reqConf,
-    filename: 'reqs.png',
-},
-{
-    conf: meanLat,
-    filename: 'meanLat.png',
-},
-{
-    conf: maxLat,
-    filename: 'maxLat.png',
-}]
-
-
-const plugin = {
-    id: 'customCanvasBackgroundColor',
-    beforeDraw: (chart, args, options) => {
-        const { ctx } = chart;
-        ctx.save();
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.fillStyle = options.color;
-        ctx.fillRect(0, 0, chart.width, chart.height);
-        ctx.restore();
-    }
-};
 const width = 600; // px
 const height = 600; // px
 
-for (const data of datas) {
-    data.conf.type = 'bar'
-    data.conf.options = {
-        plugins: {
-            customCanvasBackgroundColor: {
-                color: 'black',
-            }
-        }
-    };
-    data.conf.plugins = [plugin];
-
+for (const key in confs) {
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
-    const chart = new Chart(ctx, data.conf);
+    const chart = new Chart(ctx, confs[key].conf);
     const buf = await canvas.toBuffer()
     chart.destroy();
-    await writeFile(`./results/charts/${data.filename}`, buf);
+    await writeFile(`./results/tables/${key}.json`, JSON.stringify(confs[key].table, null, 2));
+    await writeFile(`./results/charts/${key}.png`, buf);
 }
