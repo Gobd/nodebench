@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "format": "npx prettier --write .",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "prepare": "husky"
   },
   "dependencies": {
     "canvas": "~2.11.2",
@@ -14,6 +15,7 @@
     "@types/bun": "~1.1.14",
     "@types/deno": "~2.0.0",
     "eslint": "~9.17.0",
+    "husky": "~9.1.7",
     "npm-check-updates": "~17.1.12",
     "prettier": "~3.4.2",
     "typescript-eslint": "~8.18.1"
