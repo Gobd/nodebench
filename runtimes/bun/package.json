@@ -4,11 +4,14 @@
   "main": "bun.js",
   "type": "module",
   "dependencies": {
+    "@hattip/adapter-bun": "~0.0.49",
+    "@hattip/response": "~0.0.49",
+    "@hattip/router": "~0.0.49",
     "elysia": "~1.1.26",
     "express": "~4.21.2",
+    "h3": "~1.13.0",
     "hono": "~4.6.14"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
