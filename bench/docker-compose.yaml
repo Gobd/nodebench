@@ -1,7 +1,7 @@
 services:
   node:
     build:
-      context: ./runtimes/node
+      context: ../runtimes/node
       dockerfile: Dockerfile.node
     networks:
       - bench-network
@@ -13,7 +13,7 @@ services:
 
   bun:
     build:
-      context: ./runtimes/bun
+      context: ../runtimes/bun
       dockerfile: Dockerfile.bun
     networks:
       - bench-network
@@ -25,7 +25,7 @@ services:
 
   deno:
     build:
-      context: ./runtimes/deno
+      context: ../runtimes/deno
       dockerfile: Dockerfile.deno
     networks:
       - bench-network
@@ -52,7 +52,7 @@ services:
     networks:
       - bench-network
     volumes:
-      - ./results:/results
+      - ../results:/results
     depends_on:
       node:
         condition: service_healthy
@@ -62,7 +62,6 @@ services:
         condition: service_healthy
       encore:
         condition: service_healthy
-
 
 networks:
   bench-network:
