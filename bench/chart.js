@@ -82,8 +82,12 @@ function selectColor() {
 }
 
 for (const file of files) {
+  const parsedFile = parse(file);
+  if (parsedFile.ext !== ".json") {
+    continue;
+  }
   const data = JSON.parse(await readFile(`./results/${file}`, "utf8"));
-  const label = parse(file).name;
+  const label = parsedFile.name;
   const r = data.result;
   const color = selectColor();
 
