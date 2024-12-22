@@ -8,6 +8,13 @@ cd ./runtimes/encore || exit
 ./build.sh
 cd .. || exit
 
+npm install
+
+rm -rf ./runtimes/bun/node_modules
+rm -rf ./runtimes/deno/node_modules
+rm -rf ./runtimes/encore/node_modules
+rm -rf ./runtimes/node/node_modules
+
 docker compose up \
     --build \
     --remove-orphans \

@@ -2,10 +2,8 @@
 
 ## Running
 
-Requires [Docker](https://docs.docker.com/engine/install/) and [Encore](https://encore.dev/docs/ts/install) to be installed locally.
+Requires [Docker](https://docs.docker.com/engine/install/), [Encore](https://encore.dev/docs/ts/install), and [Node](https://nodejs.org/en/download/package-manager) to be installed locally. Only tested on Mac, probably works on Linux too, don't think it'll work on Windows.
 
-```shell
-./start.sh
-```
+To update all deps run `./checkdeps.sh`
 
-- TODO expose all ports from docker-compose
+To run the benchmarks and generate graphs run `./start.sh`
