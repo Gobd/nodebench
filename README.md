@@ -12,4 +12,4 @@ To update all deps run `./checkdeps.sh`
 
 To run the benchmarks and generate graphs run `./start.sh` this will output everything into a top-level results folder.
 
-To stop all of the Docker containers started run `./down.sh`
+To stop all of the Docker containers started run `./down.sh`, this should not be needed but added just in case.
