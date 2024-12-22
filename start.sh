@@ -5,8 +5,10 @@ set -ex
 rm -rf ./results/*
 
 cd ./runtimes/encore || exit
+rm -rf .encore
+rm -rf encore.gen
 ./build.sh
-cd .. || exit
+cd ../.. || exit
 
 npm install
 
@@ -15,10 +17,12 @@ rm -rf ./runtimes/deno/node_modules
 rm -rf ./runtimes/encore/node_modules
 rm -rf ./runtimes/node/node_modules
 
-docker compose up \
+docker compose \
+    -f ./bench/docker-compose.yaml \
+    up \
     --build \
     --remove-orphans \
     --force-recreate \
     --abort-on-container-exit
 
-node chart.js
+node ./bench/chart.js
