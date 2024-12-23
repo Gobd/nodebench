@@ -1,6 +1,6 @@
 const text = "Hello World!";
 
-// Hono Deno 3008
+// Hono Deno
 import { Hono } from "hono";
 const app = new Hono();
 app.get("/", (c) => {
@@ -8,15 +8,15 @@ app.get("/", (c) => {
 });
 Deno.serve(
   {
-    port: 3008,
+    port: process.env.HONO_PORT,
   },
   app.fetch,
 );
 
-// Express Deno 3009
+// Express Deno
 import express from "express";
 const expressApp = new express();
 expressApp.get("/", (req, res) => {
   res.send(text);
 });
-expressApp.listen(3009);
+expressApp.listen(process.env.EXPRESS_PORT);

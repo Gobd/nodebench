@@ -8,7 +8,7 @@ Requires [Docker](https://docs.docker.com/engine/install/), [Encore](https://enc
 
 Run `npm run lint` and `npm run format` before committing, the Husky pre-commit hook should handle this.
 
-To update all deps run `./checkdeps.sh`
+To update all deps run `./updatedeps.sh`
 
 To run the benchmarks and generate graphs run `./start.sh` this will output everything into a top-level results folder.
 

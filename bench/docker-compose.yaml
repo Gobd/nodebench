@@ -1,12 +1,21 @@
+x-common-variables: &common-variables
+  ELYSIA_PORT: 3000
+  EXPRESS_PORT: 3002
+  FASTIFY_PORT: 3003
+  H3_PORT: 3004
+  HATTIP_PORT: 3005
+  HONO_PORT: 3006
+
 services:
   node:
     build:
       context: ../runtimes/node
       dockerfile: Dockerfile.node
+    environment: *common-variables
     networks:
       - bench-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://node:3004"]
+      test: ["CMD", "curl", "-f", "http://node:3002"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -15,10 +24,11 @@ services:
     build:
       context: ../runtimes/bun
       dockerfile: Dockerfile.bun
+    environment: *common-variables
     networks:
       - bench-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://bun:3000"]
+      test: ["CMD", "curl", "-f", "http://bun:3002"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -27,16 +37,18 @@ services:
     build:
       context: ../runtimes/deno
       dockerfile: Dockerfile.deno
+    environment: *common-variables
     networks:
       - bench-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://deno:3008"]
+      test: ["CMD", "curl", "-f", "http://deno:3002"]
       interval: 5s
       timeout: 5s
       retries: 5
 
   encore:
     image: encorebench
+    environment: *common-variables
     networks:
       - bench-network
     healthcheck:
@@ -49,6 +61,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.main
+    environment: *common-variables
     networks:
       - bench-network
     volumes:

@@ -1,6 +1,6 @@
 const text = "Hello World!";
 
-// Hono Node 3004
+// Hono Node
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 const app = new Hono();
@@ -9,23 +9,23 @@ app.get("/", (c) => {
 });
 serve({
   fetch: app.fetch,
-  port: 3004,
+  port: process.env.HONO_PORT,
 });
 
-// Express Node 3005
+// Express Node
 import express from "express";
 const expressApp = new express();
 expressApp.get("/", (req, res) => {
   res.send(text);
 });
-expressApp.listen(3005);
+expressApp.listen(process.env.EXPRESS_PORT);
 
-// Fastify Node 3006
+// Fastify Node
 import Fastify from "fastify";
 const fastifyApp = new Fastify();
 fastifyApp.get("/", function (request, reply) {
   reply.send(text);
 });
 fastifyApp.listen({
-  port: 3006,
+  port: process.env.FASTIFY_PORT,
 });
