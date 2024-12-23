@@ -2,4 +2,4 @@ FROM node
 RUN apt-get update -y && apt-get -y install curl
 ADD . .
 RUN npm install
-CMD ["node", "--expose-gc", "node.js"]
+CMD ["node", "node.js"]
