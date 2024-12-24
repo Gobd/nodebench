@@ -13,6 +13,12 @@ Deno.serve(
   app.fetch,
 );
 
+// Elysia Deno
+import { Elysia } from "elysia";
+const elysiaApp = new Elysia();
+elysiaApp.get("/", text);
+elysiaApp.listen(process.env.ELYSIA_PORT);
+
 // Express Deno
 import express from "express";
 const expressApp = new express();
