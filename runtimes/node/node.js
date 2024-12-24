@@ -20,6 +20,13 @@ expressApp.get("/", (req, res) => {
 });
 expressApp.listen(process.env.EXPRESS_PORT);
 
+// Elysia Node
+import { Elysia } from "elysia";
+import { node } from "@elysiajs/node";
+const elysiaApp = new Elysia({ adapter: node() });
+elysiaApp.get("/", text);
+elysiaApp.listen(process.env.ELYSIA_PORT);
+
 // Fastify Node
 import Fastify from "fastify";
 const fastifyApp = new Fastify();
