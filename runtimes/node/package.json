@@ -4,9 +4,9 @@
   "main": "node.js",
   "type": "module",
   "dependencies": {
-    "@elysiajs/node": "~1.2.0-exp.5",
+    "@elysiajs/node": "~1.2.1",
     "@hono/node-server": "~1.13.7",
-    "elysia": "~1.2.2",
+    "elysia": "~1.2.5",
     "express": "~4.21.2",
     "fastify": "~5.2.0",
     "hono": "~4.6.14"
