@@ -5,6 +5,7 @@ x-common-variables: &common-variables
   H3_PORT: 3004
   HATTIP_PORT: 3005
   HONO_PORT: 3006
+  ENCORE_PORT: 8080
 
 services:
   node:
