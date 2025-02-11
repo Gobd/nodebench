@@ -6,6 +6,9 @@ x-common-variables: &common-variables
   HATTIP_PORT: 3005
   HONO_PORT: 3006
   ENCORE_PORT: 8080
+  ENCORE_LOG: off
+  ENCORE_NOTRACE: 1
+  ENCORE_RUNTIME_LOG: error
 
 services:
   node:
