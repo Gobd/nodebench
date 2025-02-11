@@ -14,4 +14,4 @@ fi
 
 encore version update
 docker build -t encorebase -f Dockerfile.base .
-encore build docker --arch "$ARCH" --base encorebase encorebench
+encore build docker --services=hello --arch "$ARCH" --base encorebase encorebench

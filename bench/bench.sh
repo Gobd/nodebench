@@ -16,4 +16,4 @@ bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://deno:${ELYSIA_PORT}" > 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://deno:${EXPRESS_PORT}" > /results/express-deno.json
 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://encore:${ENCORE_PORT}" > /results/encore-json.json
-# bombardier -c 200 -l -d 30s --fasthttp -p r -o j http://encore:8080/raw > /results/encore-raw.json
+bombardier -c 200 -l -d 30s --fasthttp -p r -o j http://encore:8080/raw > /results/encore-raw.json

@@ -7,17 +7,17 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "canvas": "~3.0.0",
+    "canvas": "~3.1.0",
     "chart.js": "~4.4.7"
   },
   "devDependencies": {
-    "@eslint/js": "~9.17.0",
-    "@types/bun": "~1.1.14",
+    "@eslint/js": "~9.20.0",
+    "@types/bun": "~1.2.2",
     "@types/deno": "~2.0.0",
-    "eslint": "~9.17.0",
+    "eslint": "~9.20.1",
     "husky": "~9.1.7",
-    "npm-check-updates": "~17.1.12",
-    "prettier": "~3.4.2",
-    "typescript-eslint": "~8.18.2"
+    "npm-check-updates": "~17.1.14",
+    "prettier": "~3.5.0",
+    "typescript-eslint": "~8.24.0"
   }
 }
