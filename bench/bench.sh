@@ -5,6 +5,7 @@ bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://bun:${EXPRESS_PORT}" > 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://bun:${ELYSIA_PORT}" > /results/elysia-bun.json
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://bun:${H3_PORT}" > /results/h3-bun.json
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://bun:${HATTIP_PORT}" > /results/hattip-bun.json
+bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://bun:${FASTIFY_PORT}" > /results/fastify-bun.json
 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://node:${HONO_PORT}" > /results/hono-node.json
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://node:${EXPRESS_PORT}" > /results/express-node.json

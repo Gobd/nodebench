@@ -55,3 +55,13 @@ hattipApp.get("/", () => hattipText(text));
 Bun.serve(
   bunAdapter(hattipApp.buildHandler(), { port: process.env.HATTIP_PORT }),
 );
+
+// Fastify Bun
+import Fastify from "fastify";
+const fastifyApp = new Fastify();
+fastifyApp.get("/", function (request, reply) {
+  reply.send(text);
+});
+fastifyApp.listen({
+  port: process.env.FASTIFY_PORT,
+});
