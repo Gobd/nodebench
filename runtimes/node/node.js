@@ -9,6 +9,10 @@ const app = new Hono();
 app.get("/", (c) => {
   return c.text(text);
 });
+app.get("/gc", (c) => {
+  global.gc();
+  return c.text(text);
+});
 serve({
   fetch: app.fetch,
   port: process.env.HONO_PORT,

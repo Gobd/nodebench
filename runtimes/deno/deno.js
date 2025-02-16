@@ -8,6 +8,10 @@ const app = new Hono();
 app.get("/", (c) => {
   return c.text(text);
 });
+app.get("/gc", (c) => {
+  gc();
+  return c.text(text);
+});
 Deno.serve(
   {
     port: process.env.HONO_PORT,

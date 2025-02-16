@@ -8,6 +8,10 @@ const honoApp = new Hono();
 honoApp.get("/", (c) => {
   return c.text(text);
 });
+honoApp.get("/gc", (c) => {
+  Bun.gc(true);
+  return c.text(text);
+});
 Bun.serve({
   port: process.env.HONO_PORT,
   fetch: honoApp.fetch,
