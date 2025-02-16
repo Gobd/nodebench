@@ -1,7 +1,4 @@
 Fix:
     bun-bun
 
-Add:
-    fastify-deno
-
 Add GC endpoint for each runtime and run between each runtime/router combo
