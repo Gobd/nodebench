@@ -1,4 +1,4 @@
-FROM oven/bun
+FROM oven/bun:canary
 RUN apt-get update -y && apt-get -y install curl
 ADD . .
 RUN bun install

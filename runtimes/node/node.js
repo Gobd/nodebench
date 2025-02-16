@@ -1,5 +1,7 @@
 const text = "Hello World!";
 
+global.gc();
+
 // Hono Node
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
@@ -12,6 +14,8 @@ serve({
   port: process.env.HONO_PORT,
 });
 
+global.gc();
+
 // Express Node
 import express from "express";
 const expressApp = new express();
@@ -20,12 +24,16 @@ expressApp.get("/", (req, res) => {
 });
 expressApp.listen(process.env.EXPRESS_PORT);
 
+global.gc();
+
 // Elysia Node
 import { Elysia } from "elysia";
 import { node } from "@elysiajs/node";
 const elysiaApp = new Elysia({ adapter: node() });
 elysiaApp.get("/", text);
 elysiaApp.listen(process.env.ELYSIA_PORT);
+
+global.gc();
 
 // Fastify Node
 import Fastify from "fastify";
