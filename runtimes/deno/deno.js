@@ -1,7 +1,5 @@
 const text = "Hello World!";
 
-gc();
-
 // Hono Deno
 import { Hono } from "hono";
 const app = new Hono();
@@ -19,8 +17,6 @@ Deno.serve(
   app.fetch,
 );
 
-gc();
-
 // Elysia Deno
 import { Elysia } from "elysia";
 const elysiaApp = new Elysia();
@@ -32,7 +28,16 @@ Deno.serve(
   elysiaApp.fetch,
 );
 
-gc();
+// Fastify Deno
+import Fastify from "fastify";
+const fastifyApp = new Fastify();
+fastifyApp.get("/", function (request, reply) {
+  reply.send(text);
+});
+fastifyApp.listen({
+  port: process.env.FASTIFY_PORT,
+  host: "0.0.0.0",
+});
 
 // Express Deno
 import express from "express";

@@ -30,6 +30,8 @@ curl "http://deno:${HONO_PORT}/gc"
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://deno:${ELYSIA_PORT}" > /results/elysia-deno.json
 curl "http://deno:${HONO_PORT}/gc" 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://deno:${EXPRESS_PORT}" > /results/express-deno.json
+curl "http://deno:${HONO_PORT}/gc" 
+bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://deno:${FASTIFY_PORT}" > /results/fastify-deno.json
 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://encore:${ENCORE_PORT}" > /results/encore-json.json
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://encore:8080/raw" > /results/encore-raw.json

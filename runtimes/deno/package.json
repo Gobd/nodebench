@@ -6,6 +6,7 @@
   "dependencies": {
     "elysia": "~1.2.13",
     "express": "~4.21.2",
+    "fastify": "~5.2.1",
     "hono": "~4.7.1"
   },
   "scripts": {
