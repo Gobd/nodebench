@@ -2,4 +2,4 @@ FROM denoland/deno
 RUN apt-get update -y && apt-get -y install curl
 ADD . .
 RUN deno install
-CMD ["deno", "--allow-net", "--allow-read", "--allow-env", "--expose-gc", "deno.js"]
+CMD ["deno", "--allow-net", "--allow-read", "--allow-env", "--v8-flags=--expose-gc", "deno.js"]

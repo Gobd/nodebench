@@ -43,4 +43,5 @@ fastifyApp.get("/", function (request, reply) {
 });
 fastifyApp.listen({
   port: process.env.FASTIFY_PORT,
+  host: "0.0.0.0",
 });

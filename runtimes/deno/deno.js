@@ -1,6 +1,6 @@
 const text = "Hello World!";
 
-global.gc();
+gc();
 
 // Hono Deno
 import { Hono } from "hono";
@@ -15,7 +15,7 @@ Deno.serve(
   app.fetch,
 );
 
-global.gc();
+gc();
 
 // Elysia Deno
 import { Elysia } from "elysia";
@@ -28,7 +28,7 @@ Deno.serve(
   elysiaApp.fetch,
 );
 
-global.gc();
+gc();
 
 // Express Deno
 import express from "express";
