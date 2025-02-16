@@ -91,6 +91,18 @@ for (const file of files) {
   const r = data.result;
   const color = selectColor();
 
+  if (
+    r.req1xx > 0 ||
+    r.req3xx > 0 ||
+    r.req4xx > 0 ||
+    r.req5xx > 0 ||
+    r.others > 0
+  ) {
+    r.rps.mean = 0;
+    r.latency.mean = 0;
+    r.latency.max = 0;
+  }
+
   confs.reqs.table[label] = Math.round(r.rps.mean);
   confs.reqs.conf.data.labels.push(label);
   confs.reqs.conf.data.datasets[0].data.push(r.rps.mean);
