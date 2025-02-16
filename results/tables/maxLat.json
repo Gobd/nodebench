@@ -1,0 +1,19 @@
+{
+  "bun-bun": 0,
+  "express-bun": 67330,
+  "express-node": 723363,
+  "elysia-deno": 42981,
+  "encore-raw": 235958,
+  "fastify-deno": 56913,
+  "encore-json": 47263,
+  "hono-deno": 54462,
+  "hattip-bun": 48787,
+  "elysia-bun": 54058,
+  "hono-bun": 47383,
+  "express-deno": 57943,
+  "elysia-node": 267319,
+  "fastify-node": 304200,
+  "hono-node": 323282,
+  "fastify-bun": 47621,
+  "h3-bun": 53416
+}

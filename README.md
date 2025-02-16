@@ -13,3 +13,13 @@ To update all deps run `./updatedeps.sh`
 To run the benchmarks and generate graphs run `./start.sh` this will output everything into a top-level results folder.
 
 To stop all of the Docker containers started run `./down.sh`, this should not be needed but added just in case.
+
+## Results
+
+![Requests per second](./results/charts/reqs.png)
+
+![Max latency](./results/charts/maxLat.png)
+
+![Mean latency](./results/charts/meanLat.png)
+
+Run on a 14" M2 Pro MBP with 16GB RAM. See the results folder for details.

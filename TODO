@@ -1,4 +1,2 @@
 Fix:
-    bun-bun
-
-Add GC endpoint for each runtime and run between each runtime/router combo
+    bun-bun (need v1.2.3 released)

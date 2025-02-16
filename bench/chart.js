@@ -87,6 +87,7 @@ for (const file of files) {
     continue;
   }
   const data = JSON.parse(await readFile(`./results/${file}`, "utf8"));
+  await writeFile(`./results/${file}`, JSON.stringify(data, null, 4));
   const label = parsedFile.name;
   const r = data.result;
   const color = selectColor();

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-curl "http://bun:${HONO_PORT}/gc" 
+curl --fail-with-body --silent --show-error "http://bun:${HONO_PORT}/gc" 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://bun:${HONO_PORT}" > /results/hono-bun.json
 curl --fail-with-body --silent --show-error "http://bun:${HONO_PORT}/gc" 
 bombardier -c 200 -l -d 30s --fasthttp -p r -o j "http://bun:${EXPRESS_PORT}" > /results/express-bun.json
