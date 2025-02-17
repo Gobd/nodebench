@@ -1,5 +1,5 @@
 FROM oven/bun
-RUN apt-get update -y && apt-get -y install curl
+RUN apt-get update -y && apt-get -y install curl unzip
 ADD . .
 RUN bun install
 CMD ["bun", "bun.js"]

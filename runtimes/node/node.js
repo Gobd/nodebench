@@ -7,6 +7,10 @@ const app = new Hono();
 app.get("/", (c) => {
   return c.text(text);
 });
+app.get("/gc", (c) => {
+  global.gc();
+  return c.text(text);
+});
 serve({
   fetch: app.fetch,
   port: process.env.HONO_PORT,
@@ -35,4 +39,5 @@ fastifyApp.get("/", function (request, reply) {
 });
 fastifyApp.listen({
   port: process.env.FASTIFY_PORT,
+  host: "0.0.0.0",
 });

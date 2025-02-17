@@ -6,6 +6,10 @@ const honoApp = new Hono();
 honoApp.get("/", (c) => {
   return c.text(text);
 });
+honoApp.get("/gc", (c) => {
+  Bun.gc(true);
+  return c.text(text);
+});
 Bun.serve({
   port: process.env.HONO_PORT,
   fetch: honoApp.fetch,
@@ -64,4 +68,16 @@ fastifyApp.get("/", function (request, reply) {
 });
 fastifyApp.listen({
   port: process.env.FASTIFY_PORT,
+  host: "0.0.0.0",
+});
+
+// Bun Bun
+Bun.serve({
+  port: process.env.BUN_PORT,
+  routes: {
+    "/": {
+      GET: async () => new Response(text, { status: 200 }),
+    },
+  },
+  fetch: () => new Response("Not Found", { status: 404 }),
 });

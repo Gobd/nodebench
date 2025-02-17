@@ -1,0 +1,48 @@
+{
+  "spec": {
+    "numberOfConnections": 200,
+    "testType": "timed",
+    "testDurationSeconds": 30,
+    "method": "GET",
+    "url": "http://encore:8080",
+    "body": "",
+    "stream": false,
+    "timeoutSeconds": 2,
+    "client": "fasthttp"
+  },
+  "result": {
+    "bytesRead": 804627536,
+    "bytesWritten": 262281904,
+    "timeTakenSeconds": 30.002622346,
+    "req1xx": 0,
+    "req2xx": 4445456,
+    "req3xx": 0,
+    "req4xx": 0,
+    "req5xx": 0,
+    "others": 0,
+    "latency": {
+      "mean": 1347.6971262340692,
+      "stddev": 395.67381101045646,
+      "max": 47263,
+      "percentiles": {
+        "50": 1195,
+        "75": 1486,
+        "90": 2227,
+        "95": 2516,
+        "99": 3013
+      }
+    },
+    "rps": {
+      "mean": 148237.31151439445,
+      "stddev": 13500.214836750478,
+      "max": 174511.14218125676,
+      "percentiles": {
+        "50": 150140.478894,
+        "75": 154684.400201,
+        "90": 158899.102295,
+        "95": 161035.944631,
+        "99": 165517.23862
+      }
+    }
+  }
+}

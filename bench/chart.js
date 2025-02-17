@@ -4,7 +4,7 @@ import {
   writeFile,
   stat,
   mkdir,
-  rmdir,
+  rm,
 } from "node:fs/promises";
 import { parse } from "node:path";
 import { Chart } from "chart.js/auto";
@@ -14,7 +14,7 @@ const dirs = ["charts", "tables"];
 for (const dir of dirs) {
   const dirExists = await stat(`./results/${dir}`).catch(() => false);
   if (dirExists) {
-    await rmdir(`./results/${dir}`, { recursive: true });
+    await rm(`./results/${dir}`, { recursive: true });
   }
 }
 
@@ -87,9 +87,22 @@ for (const file of files) {
     continue;
   }
   const data = JSON.parse(await readFile(`./results/${file}`, "utf8"));
+  await writeFile(`./results/${file}`, JSON.stringify(data, null, 4));
   const label = parsedFile.name;
   const r = data.result;
   const color = selectColor();
+
+  if (
+    r.req1xx > 0 ||
+    r.req3xx > 0 ||
+    r.req4xx > 0 ||
+    r.req5xx > 0 ||
+    r.others > 0
+  ) {
+    r.rps.mean = 0;
+    r.latency.mean = 0;
+    r.latency.max = 0;
+  }
 
   confs.reqs.table[label] = Math.round(r.rps.mean);
   confs.reqs.conf.data.labels.push(label);

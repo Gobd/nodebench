@@ -1,0 +1,48 @@
+{
+  "spec": {
+    "numberOfConnections": 200,
+    "testType": "timed",
+    "testDurationSeconds": 30,
+    "method": "GET",
+    "url": "http://deno:3003",
+    "body": "",
+    "stream": false,
+    "timeoutSeconds": 2,
+    "client": "fasthttp"
+  },
+  "result": {
+    "bytesRead": 255911456,
+    "bytesWritten": 95966796,
+    "timeTakenSeconds": 30.00335618,
+    "req1xx": 0,
+    "req2xx": 1683628,
+    "req3xx": 0,
+    "req4xx": 0,
+    "req5xx": 0,
+    "others": 0,
+    "latency": {
+      "mean": 3562.206164901035,
+      "stddev": 578.3382666587327,
+      "max": 56913,
+      "percentiles": {
+        "50": 3485,
+        "75": 3680,
+        "90": 3901,
+        "95": 4109,
+        "99": 5119
+      }
+    },
+    "rps": {
+      "mean": 56124.236425117044,
+      "stddev": 4745.515946647971,
+      "max": 61631.11313543914,
+      "percentiles": {
+        "50": 57264.117974,
+        "75": 58520.008496,
+        "90": 59544.608072,
+        "95": 60037.145465,
+        "99": 60678.829801
+      }
+    }
+  }
+}
