@@ -74,7 +74,6 @@ fastifyApp.listen({
 // Bun Bun
 Bun.serve({
   port: process.env.BUN_PORT,
-  hostname: "0.0.0.0",
   routes: {
     "/": {
       GET: async () => new Response(text, { status: 200 }),

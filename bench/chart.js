@@ -4,7 +4,7 @@ import {
   writeFile,
   stat,
   mkdir,
-  rmdir,
+  rm,
 } from "node:fs/promises";
 import { parse } from "node:path";
 import { Chart } from "chart.js/auto";
@@ -14,7 +14,7 @@ const dirs = ["charts", "tables"];
 for (const dir of dirs) {
   const dirExists = await stat(`./results/${dir}`).catch(() => false);
   if (dirExists) {
-    await rmdir(`./results/${dir}`, { recursive: true });
+    await rm(`./results/${dir}`, { recursive: true });
   }
 }
 
